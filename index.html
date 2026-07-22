@@ -69,8 +69,76 @@ nav{position:fixed;top:0;left:0;right:0;display:flex;align-items:center;justify-
 .hero-socials{display:flex;gap:.8rem;margin-top:1.8rem;opacity:0;animation:fadeUp .7s 1.2s forwards;}
 .hero-socials a{font-family:var(--font-mono);font-size:10px;color:var(--muted);text-decoration:none;border:0.5px solid var(--border);padding:.35rem .8rem;transition:all .2s;letter-spacing:.08em;}
 .hero-socials a:hover{color:var(--accent);border-color:var(--accent);}
-.scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:.2em;animation:bounce 2s infinite;opacity:0;animation:fadeUp .7s 1.5s forwards,bounce 2s 2s infinite;}
+.scroll-hint{
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 8px;
 
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: .25em;
+    text-transform: uppercase;
+    color: rgba(0,255,224,.75);
+
+    opacity: 0;
+    animation: scrollFade 1.2s ease forwards,
+               scrollFloat 2.8s ease-in-out infinite 1.2s;
+
+    text-shadow: 0 0 10px rgba(0,255,224,.5);
+    user-select: none;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.scroll-hint::before{
+    content: "";
+    width: 30px;
+    height: 1px;
+    background: var(--accent);
+    box-shadow: 0 0 10px var(--accent);
+}
+
+.scroll-hint::after{
+    content: "↓";
+    font-size: 16px;
+    color: var(--accent);
+    animation: arrowMove 1.5s ease-in-out infinite;
+}
+
+@keyframes scrollFade{
+    from{
+        opacity:0;
+        transform:translate(-50%,20px);
+    }
+    to{
+        opacity:1;
+        transform:translate(-50%,0);
+    }
+}
+
+@keyframes scrollFloat{
+    0%,100%{
+        transform:translate(-50%,0);
+    }
+    50%{
+        transform:translate(-50%,8px);
+    }
+}
+
+@keyframes arrowMove{
+    0%,100%{
+        transform:translateY(0);
+        opacity:1;
+    }
+    50%{
+        transform:translateY(8px);
+        opacity:.4;
+    }
+}
 /* hero card */
 .hero-right{display:flex;justify-content:center;align-items:center;position:relative;z-index:2;opacity:0;animation:fadeUp .7s .5s forwards;}
 .hcard{width:310px;border:0.5px solid var(--border);background:var(--card);padding:2rem;position:relative;backdrop-filter:blur(10px);}
@@ -231,12 +299,12 @@ footer{padding:2rem 4rem;border-top:0.5px solid var(--border);display:flex;justi
   .nav-links.open{
     display:flex;
   }
-{
+
 .nav-status{
     display:flex !important;
     font-size:9px;
     gap:4px;
-  }
+  
 
 }
 
@@ -383,8 +451,8 @@ footer{padding:2rem 4rem;border-top:0.5px solid var(--border);display:flex;justi
     text-align:center;
     justify-content:center;
   }
-
 }
+
 
 
 /* EXTRA SMALL DEVICES */
@@ -416,6 +484,7 @@ footer{padding:2rem 4rem;border-top:0.5px solid var(--border);display:flex;justi
   }
 
 }
+
 </style>
 </head>
 <body>
@@ -486,7 +555,9 @@ footer{padding:2rem 4rem;border-top:0.5px solid var(--border);display:flex;justi
       </div>
     </div>
   </div>
-  <div class="scroll-hint" style="position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:.2em;animation:bounce 2s 2s infinite;opacity:0;animation:fadeUp .7s 1.8s forwards,bounce 2.5s 2.5s infinite;">↓ SCROLL TO EXPLORE ↓</div>
+ <div class="scroll-hint">
+    Scroll to Explore
+</div>
 </section>
 
 <!-- ABOUT -->
@@ -576,7 +647,6 @@ footer{padding:2rem 4rem;border-top:0.5px solid var(--border);display:flex;justi
 
       <div class="proj-links">
       
-        </a>
       </div>
     </div>
 
@@ -607,7 +677,6 @@ footer{padding:2rem 4rem;border-top:0.5px solid var(--border);display:flex;justi
       <div class="proj-links">
         <a href="https://eswarn007.github.io/training/" target="_blank" class="plink primary">
           LIVE DEMO ↗
-        </a>
         </a>
       </div>
     </div>
@@ -640,7 +709,6 @@ footer{padding:2rem 4rem;border-top:0.5px solid var(--border);display:flex;justi
       <div class="proj-links">
         <a href="https://deepadharshini007.github.io/aboutme" target="_blank" class="plink primary">
           LIVE DEMO ↗
-        </a>
         </a>
       </div>
     </div>
